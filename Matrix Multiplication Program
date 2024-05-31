@@ -1,0 +1,88 @@
+// Title: Matrix Multiplication Program
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Matrix {
+private:
+    vector<vector<int>> data;
+    int rows, cols;
+
+public:
+    Matrix(int r, int c) : rows(r), cols(c) {
+        data.resize(rows, vector<int>(cols));
+    }
+
+    // Access element at (i, j)
+    int& operator()(int i, int j) {
+        return data[i][j];
+    }
+
+    // Add two matrices
+    Matrix operator+(const Matrix& other) {
+        if (rows != other.rows || cols != other.cols) {
+            throw invalid_argument("Matrices have different dimensions");
+        }
+        Matrix result(rows, cols);
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                result(i, j) = data[i][j] + other.data[i][j];
+            }
+        }
+        return result;
+    }
+
+    // Subtract two matrices
+    Matrix operator-(const Matrix& other) {
+        if (rows != other.rows || cols != other.cols) {
+            throw invalid_argument("Matrices have different dimensions");
+        }
+        Matrix result(rows, cols);
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                result(i, j) = data[i][j] - other.data[i][j];
+            }
+        }
+        return result;
+    }
+
+    // Multiply two matrices
+    Matrix operator*(const Matrix& other) {
+        if (cols != other.rows) {
+            throw invalid_argument("Matrices have incompatible dimensions");
+        }
+        Matrix result(rows, other.cols);
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < other.cols; ++j) {
+                int sum = 0;
+                for (int k = 0; k < cols; ++k) {
+                    sum += data[i][k] * other.data[k][j];
+                }
+                result(i, j) = sum;
+            }
+        }
+        return result;
+    }
+};
+
+int main() {
+    Matrix A(2, 2);
+    Matrix B(2, 2);
+
+    A(0, 0) = 1; A(0, 1) = 2;
+    A(1, 0) = 3; A(1, 1) = 4;
+
+    B(0, 0) = 5; B(0, 1) = 6;
+    B(1, 0) = 7; B(1, 1) = 8;
+
+    Matrix C = A * B;
+
+    for (int i = 0; i < 2; ++i) {
+        for (int j = 0; j < 2; ++j) {
+            cout << C(i, j) << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
