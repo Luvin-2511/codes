@@ -1,0 +1,31 @@
+#include <string>
+#include <iostream>
+
+class Person {
+public:
+    std::string name;
+    int age;
+
+    Person(std::string name, int age) : name(name), age(age) {}
+};
+
+class Student : public Person {
+public:
+    std::string studentID;
+
+    Student(std::string name, int age, std::string studentID)
+        : Person(name, age), studentID(studentID) {}
+
+    void display_details() {
+        std::cout << "Name: " << name << "\n";
+        std::cout << "Age: " << age << "\n";
+        std::cout << "Student ID: " << studentID << "\n";
+    }
+};
+
+int main() {
+    Student student("John Doe", 20, "123456");
+    student.display_details();
+
+    return 0;
+}
