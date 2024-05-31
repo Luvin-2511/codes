@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+// Calculate Sum and Average of Array Elements Example
+void calculateSumAndAverage(int arr[], int size, int& sum, double& average) {
+    sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    average = static_cast<double>(sum) / size;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int sum;
+    double average;
+
+    calculateSumAndAverage(arr, size, sum, average);
+
+    cout << "Sum of elements: " << sum << endl;
+    cout << "Average of elements: " << average << endl;
+
+    return 0;
+}
