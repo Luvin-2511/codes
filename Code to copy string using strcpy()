@@ -1,0 +1,11 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char source[] = "Hello, world!";
+    char destination[100];
+    strcpy(destination, source);
+    cout << "Copied string: " << destination << endl;
+    return 0;
+}
