@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+template <typename T1, typename T2>
+class Pair {
+private:
+    T1 value1;
+    T2 value2;
+
+public:
+    Pair(T1 v1, T2 v2) : value1(v1), value2(v2) {}
+
+    T1 getValue1() const {
+        return value1;
+    }
+
+    T2 getValue2() const {
+        return value2;
+    }
+
+    void setValue1(T1 v1) {
+        value1 = v1;
+    }
+
+    void setValue2(T2 v2) {
+        value2 = v2;
+    }
+};
+
+int main() {
+    Pair<int, string> intStringPair(5, "hello");
+    cout << "Integer value: " << intStringPair.getValue1() << endl;
+    cout << "String value: " << intStringPair.getValue2() << endl;
+
+    intStringPair.setValue1(10);
+    intStringPair.setValue2("world");
+    cout << "Integer value: " << intStringPair.getValue1() << endl;
+    cout << "String value: " << intStringPair.getValue2() << endl;
+
+    return 0;
+}
