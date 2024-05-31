@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+using namespace std;
+
+struct Point {
+    double x, y;
+    Point(double _x, double _y) : x(_x), y(_y) {}
+};
+
+class Polygon {
+private:
+    vector<Point> vertices;
+
+public:
+    Polygon(const vector<Point>& _vertices) : vertices(_vertices) {}
+
+    double perimeter() const {
+        double totalPerimeter = 0.0;
+        size_t numVertices = vertices.size();
+        for (size_t i = 0; i < numVertices; ++i) {
+            size_t nextIndex = (i + 1) % numVertices;
+            double dx = vertices[nextIndex].x - vertices[i].x;
+            double dy = vertices[nextIndex].y - vertices[i].y;
+            totalPerimeter += sqrt(dx * dx + dy * dy);
+        }
+        return totalPerimeter;
+    }
+
+    double area() const {
+        double totalArea = 0.0;
+        size_t numVertices = vertices.size();
+        for (size_t i = 0; i < numVertices; ++i) {
+            size_t nextIndex = (i + 1) % numVertices;
+            totalArea += (vertices[i].x * vertices[nextIndex].y) -
+                         (vertices[nextIndex].x * vertices[i].y);
+        }
+        return abs(totalArea) / 2.0;
+    }
+};
+
+int main() {
+    vector<Point> vertices = {Point(0, 0), Point(4, 0), Point(4, 3), Point(0, 3)};
+    Polygon polygon(vertices);
+
+    cout << "Perimeter: " << polygon.perimeter() << endl;
+    cout << "Area: " << polygon.area() << endl;
+
+    return 0;
+}
