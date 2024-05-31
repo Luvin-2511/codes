@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int marks1, marks2, marks3;
+    double totalMarks, percentage;
+    
+    cout << "Enter marks for subject 1: ";
+    cin >> marks1;
+    cout << "Enter marks for subject 2: ";
+    cin >> marks2;
+    cout << "Enter marks for subject 3: ";
+    cin >> marks3;
+    
+    totalMarks = marks1 + marks2 + marks3;
+    percentage = (totalMarks / 300) * 100;
+    
+    cout << "\n--- Marksheet ---" << endl;
+    cout << "Subject 1 marks: " << marks1 << endl;
+    cout << "Subject 2 marks: " << marks2 << endl;
+    cout << "Subject 3 marks: " << marks3 << endl;
+    cout << "Total marks: " << totalMarks << endl;
+    cout << "Percentage: " << percentage << "%" << endl;
+    
+    if (percentage >= 90) {
+        cout << "Grade: A+" << endl;
+    } else if (percentage >= 80) {
+        cout << "Grade: A" << endl;
+    } else if (percentage >= 70) {
+        cout << "Grade: B" << endl;
+    } else if (percentage >= 60) {
+        cout << "Grade: C" << endl;
+    } else if (percentage >= 50) {
+        cout << "Grade: D" << endl;
+    } else {
+        cout << "Grade: F" << endl;
+    }
+    
+    return 0;
+}
