@@ -1,0 +1,43 @@
+// Title: Time Addition Program
+#include <iostream>
+using namespace std;
+
+class Time {
+private:
+    int hours;
+    int minutes;
+    int seconds;
+
+public:
+    Time(int h = 0, int m = 0, int s = 0) : hours(h), minutes(m), seconds(s) {}
+
+    // Method to add two Time objects
+    Time addTime(const Time& t) const {
+        Time sum;
+        sum.seconds = seconds + t.seconds;
+        sum.minutes = minutes + t.minutes + sum.seconds / 60;
+        sum.hours = hours + t.hours + sum.minutes / 60;
+        sum.minutes %= 60;
+        sum.seconds %= 60;
+        return sum;
+    }
+
+    void displayTime() const {
+        cout << "Time: " << hours << " hours, " << minutes << " minutes, " << seconds << " seconds" << endl;
+    }
+};
+
+int main() {
+    Time time1(3, 45, 30);
+    Time time2(1, 20, 45);
+
+    cout << "Time 1: ";
+    time1.displayTime();
+    cout << "Time 2: ";
+    time2.displayTime();
+    Time sum = time1.addTime(time2);
+    cout << "\nSum of Time 1 and Time 2: ";
+    sum.displayTime();
+
+    return 0;
+}
