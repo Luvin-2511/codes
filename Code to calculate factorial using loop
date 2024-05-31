@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int factorialWhileLoop(int n) {
+    int result = 1;
+    while (n > 0) {
+        result *= n;
+        n--;
+    }
+    return result;
+}
+
+int main() {
+    int num;
+    cout << "Enter a number to find its factorial: ";
+    cin >> num;
+    cout << "Factorial using while loop: " << factorialWhileLoop(num) << endl;
+    return 0;
+}
