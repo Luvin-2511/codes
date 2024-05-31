@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Shape {
+public:
+    virtual double area() const {
+        return 0;
+    }
+};
+
+class Rectangle : public Shape {
+private:
+    double width;
+    double height;
+
+public:
+    Rectangle(double width, double height) : width(width), height(height) {}
+
+    double area() const override {
+        return width * height;
+    }
+};
+
+int main() {
+    Rectangle rect(5, 10);
+    cout << "Area of rectangle: " << rect.area() << endl;
+
+    return 0;
+}
