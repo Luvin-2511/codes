@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+// Function to display a value
+void display(int x) {
+    cout << "Value: " << x << endl;
+}
+
+int main() {
+    int value = 10;
+    display(value); 
+    return 0;
+}
