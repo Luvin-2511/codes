@@ -1,0 +1,61 @@
+// Title: Car Information System
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Car {
+private:
+    string make;
+    string model;
+    int year;
+
+public:
+    Car(string carMake, string carModel, int carYear) {
+        make = carMake;
+        model = carModel;
+        year = carYear;
+    }
+
+    void setMake(string carMake) {
+        make = carMake;
+    }
+
+    void setModel(string carModel) {
+        model = carModel;
+    }
+
+    void setYear(int carYear) {
+        year = carYear;
+    }
+
+    string getMake() {
+        return make;
+    }
+
+    string getModel() {
+        return model;
+    }
+
+    int getYear() {
+        return year;
+    }
+};
+
+int main() {
+    Car myCar("Toyota", "Corolla", 2020);
+    cout << "Initial Car Details:" << endl;
+    cout << "Make: " << myCar.getMake() << endl;
+    cout << "Model: " << myCar.getModel() << endl;
+    cout << "Year: " << myCar.getYear() << endl;
+
+    myCar.setMake("Honda");
+    myCar.setModel("Civic");
+    myCar.setYear(2019);
+
+    cout << "\nUpdated Car Details:" << endl;
+    cout << "Make: " << myCar.getMake() << endl;
+    cout << "Model: " << myCar.getModel() << endl;
+    cout << "Year: " << myCar.getYear() << endl;
+
+    return 0;
+}
