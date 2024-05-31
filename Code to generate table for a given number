@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+void multiplicationTable(int num) {
+    cout << "Multiplication Table of " << num << ":" << endl;
+    for (int i = 1; i <= 10; ++i) {
+        cout << num << " * " << i << " = " << (num * i) << endl;
+    }
+}
+
+int main() {
+    int number;
+    cout << "Enter a number to create its multiplication table: ";
+    cin >> number;
+    multiplicationTable(number);
+    return 0;
+}
