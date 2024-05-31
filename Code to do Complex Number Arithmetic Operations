@@ -1,0 +1,65 @@
+// Title: Complex Number Arithmetic Operations
+#include <iostream>
+using namespace std;
+
+class Complex {
+private:
+    double real;
+    double imag;
+
+public:
+    Complex(double r, double i) {
+        real = r;
+        imag = i;
+    }
+
+    Complex add(Complex c) {
+        double newReal = real + c.real;
+        double newImag = imag + c.imag;
+        return Complex(newReal, newImag);
+    }
+
+    Complex subtract(Complex c) {
+        double newReal = real - c.real;
+        double newImag = imag - c.imag;
+        return Complex(newReal, newImag);
+    }
+
+    Complex multiply(Complex c) {
+        double newReal = (real * c.real) - (imag * c.imag);
+        double newImag = (real * c.imag) + (imag * c.real);
+        return Complex(newReal, newImag);
+    }
+
+    Complex divide(Complex c) {
+        double denominator = (c.real * c.real) + (c.imag * c.imag);
+        double newReal = ((real * c.real) + (imag * c.imag)) / denominator;
+        double newImag = ((imag * c.real) - (real * c.imag)) / denominator;
+        return Complex(newReal, newImag);
+    }
+
+    void display() {
+        cout << real << " + " << imag << "i" << endl;
+    }
+};
+
+int main() {
+    Complex c1(3, 4);
+    Complex c2(1, 2);
+
+    Complex sum = c1.add(c2);
+    Complex difference = c1.subtract(c2);
+    Complex product = c1.multiply(c2);
+    Complex quotient = c1.divide(c2);
+
+    cout << "Sum: ";
+    sum.display();
+    cout << "Difference: ";
+    difference.display();
+    cout << "Product: ";
+    product.display();
+    cout << "Quotient: ";
+    quotient.display();
+
+    return 0;
+}
