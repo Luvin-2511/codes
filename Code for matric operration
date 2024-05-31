@@ -1,0 +1,126 @@
+// Title: Matrix Operations Program
+#include <iostream>
+using namespace std;
+
+class Matrix {
+private:
+    int rows, cols;
+    int** data;
+
+public:
+    // Constructor
+    Matrix(int r, int c) {
+        rows = r;
+        cols = c;
+        data = new int* [rows];
+        for (int i = 0; i < rows; i++) {
+            data[i] = new int[cols];
+        }
+    }
+
+    // Destructor
+    ~Matrix() {
+        for (int i = 0; i < rows; i++) {
+            delete[] data[i];
+        }
+        delete[] data;
+    }
+
+    // Access elements
+    int& operator()(int i, int j) {
+        return data[i][j];
+    }
+
+    // Get matrix dimensions
+    int getRows() {
+        return rows;
+    }
+
+    int getCols() {
+        return cols;
+    }
+
+    // Add matrices
+    Matrix operator+(const Matrix& other) {
+        if (rows != other.rows || cols != other.cols) {
+            throw invalid_argument("Matrices have different dimensions");
+        }
+        Matrix result(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result(i, j) = data[i][j] + other.data[i][j];
+            }
+        }
+        return result;
+    }
+
+    // Subtract matrices
+    Matrix operator-(const Matrix& other) {
+        if (rows != other.rows || cols != other.cols) {
+            throw invalid_argument("Matrices have different dimensions");
+        }
+        Matrix result(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result(i, j) = data[i][j] - other.data[i][j];
+            }
+        }
+        return result;
+    }
+
+
+    // Multiply matrices
+    Matrix operator*(const Matrix& other) {
+        if (cols != other.rows) {
+            throw invalid_argument("Matrices have incompatible dimensions");
+        }
+        Matrix result(rows, other.cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < other.cols; j++) {
+                int sum = 0;
+                for (int k = 0; k < cols; k++) {
+                    sum += data[i][k] * other.data[k][j];
+                }
+                result(i, j) = sum;
+            }
+        }
+        return result;
+    }
+};
+
+int main() {
+    Matrix A(2, 3);
+    Matrix B(3, 2);
+
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            A(i, j) = i + j;
+        }
+    }
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 2; j++) {
+            B(i, j) = i - j;
+        }
+    }
+
+    Matrix C = A + B;
+    Matrix D = A - B;
+    Matrix E = A * B;
+
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << C(i, j) << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << D(i, j) << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
