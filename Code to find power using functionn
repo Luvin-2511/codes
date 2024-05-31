@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+// Recursive Power Calculation
+int power(int base, int exponent) {
+    if (exponent == 0) {
+        return 1;
+    } else {
+        return base * power(base, exponent - 1);
+    }
+}
+
+int main() {
+    int base = 2;
+    int exponent = 3;
+    int result = power(base, exponent);
+
+    cout << "The power of " << base << " raised to the power of " << exponent << " is: " << result << endl;
+
+    return 0;
+}
