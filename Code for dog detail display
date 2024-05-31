@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+
+class Animal {
+public:
+    std::string species;
+
+    Animal(std::string species) : species(species) {}
+};
+
+class Mammal : public Animal {
+public:
+    bool hasFur;
+
+    Mammal(std::string species, bool hasFur) : Animal(species), hasFur(hasFur) {}
+};
+
+class Dog : public Mammal {
+public:
+    std::string breed;
+
+    Dog(std::string species, bool hasFur, std::string breed)
+        : Mammal(species, hasFur), breed(breed) {}
+
+    void displayDetails() {
+        std::cout << "Species: " << species << "\n";
+        std::cout << "Has fur: " << (hasFur ? "Yes" : "No") << "\n";
+        std::cout << "Breed: " << breed << "\n";
+    }
+};
+
+int main() {
+    Dog dog("Canine", true, "Golden Retriever");
+    dog.displayDetails();
+
+    return 0;
+}
