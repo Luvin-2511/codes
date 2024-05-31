@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+// Definition of Circle class
+class Circle {
+public:
+    double radius;
+    
+    // Method to calculate area of the circle
+    double area() {
+        return 3.14 * radius * radius;
+    }
+};
+
+int main() {
+    // Create an instance of Circle class
+    Circle c;
+    
+    // Set radius value
+    c.radius = 5;
+    
+    // Display the area of the circle
+    cout << "Area: " << c.area() << endl;
+    
+    return 0;
+}
