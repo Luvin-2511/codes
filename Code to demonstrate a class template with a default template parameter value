@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+template <typename T = int>
+class Box {
+private:
+    T value;
+
+public:
+    Box() : value(0) {}
+
+    Box(T v) : value(v) {}
+
+    T getValue() const {
+        return value;
+    }
+
+    void setValue(T v) {
+        value = v;
+    }
+};
+
+int main() {
+    Box<int> intBox;
+    intBox.setValue(5);
+    cout << "Integer value: " << intBox.getValue() << endl;
+
+    Box<string> stringBox("hello");
+    cout << "String value: " << stringBox.getValue() << endl;
+
+    Box<> defaultBox(10);
+    cout << "Default value: " << defaultBox.getValue() << endl;
+
+    return 0;
+}
