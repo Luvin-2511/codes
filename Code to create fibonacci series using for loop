@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, firstTerm = 0, secondTerm = 1, nextTerm;
+    cout << "Enter the number of terms: ";
+    cin >> n;
+    cout << "Fibonacci Series:" << endl;
+    int i = 1;
+    while (i <= n) {
+        if (i == 1) {
+            cout << firstTerm << ", ";
+            i++;
+            continue;
+        }
+        if (i == 2) {
+            cout << secondTerm << ", ";
+            i++;
+            continue;
+        }
+        nextTerm = firstTerm + secondTerm;
+        firstTerm = secondTerm;
+        secondTerm = nextTerm;
+        cout << nextTerm << ", ";
+        i++;
+    }
+    return 0;
+}
