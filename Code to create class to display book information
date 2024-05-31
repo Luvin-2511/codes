@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+class Book {
+public:
+    string title;
+    string author;
+};
+
+int main() {
+    Book b;
+    b.title = "Introduction to C++";
+    b.author = "John Doe";
+    cout << "Book: " << b.title << " by " << b.author << endl;
+    return 0;
+}
