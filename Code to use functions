@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+// Function to greet a person
+void greet(string name) {
+    cout << "Hello, " << name << "!" << endl;
+}
+
+int main() {
+    greet("Bob");
+    return 0;
+}
