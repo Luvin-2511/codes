@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int rows;
+    char specialChar;
+    cout << "Enter the number of rows for the pattern: ";
+    cin >> rows;
+    cout << "Enter the special character to use: ";
+    cin >> specialChar;
+    for (int i = 1; i <= rows; ++i) {
+        for (int j = 1; j <= i; ++j) {
+            cout << specialChar << " ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
