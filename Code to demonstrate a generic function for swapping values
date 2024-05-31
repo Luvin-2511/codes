@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+template <typename T>
+void SwapValues(T& a, T& b) {
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    cout << "Before swapping: x = " << x << ", y = " << y << endl;
+    SwapValues(x, y);
+    cout << "After swapping: x = " << x << ", y = " << y << endl;
+
+    string s1 = "hello", s2 = "world";
+    cout << "Before swapping: s1 = " << s1 << ", s2 = " << s2 << endl;
+    SwapValues(s1, s2);
+    cout << "After swapping: s1 = " << s1 << ", s2 = " << s2 << endl;
+
+    return 0;
+}
