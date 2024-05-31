@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+unsigned long long calculateFactorial(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * calculateFactorial(n - 1);
+}
+
+int main() {
+    int num;
+    cout << "Please input a number to compute its factorial: ";
+    cin >> num;
+    cout << "Factorial of " << num << " is: " << calculateFactorial(num) << endl;
+    return 0;
+}
