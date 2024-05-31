@@ -1,0 +1,39 @@
+// Title: Employee Management System
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee {
+private:
+    int employeeID;
+    string name;
+    double salary;
+
+public:
+    Employee(int id, string empName, double empSalary) {
+        employeeID = id;
+        name = empName;
+        salary = empSalary;
+    }
+
+    void giveRaise(double raiseAmount) {
+        salary += raiseAmount;
+        cout << name << "'s salary has been raised by $" << raiseAmount << endl;
+    }
+
+    void displayDetails() {
+        cout << "Employee ID: " << employeeID << endl;
+        cout << "Name: " << name << endl;
+        cout << "Salary: $" << salary << endl;
+    }
+};
+
+int main() {
+    Employee emp1(101, "AC", 50000);
+    cout << "Initial Details:" << endl;
+    emp1.displayDetails();
+    emp1.giveRaise(5000);
+    cout << "\nDetails after Raise:" << endl;
+    emp1.displayDetails();
+    return 0;
+}
