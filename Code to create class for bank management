@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+// Definition of BankAccount class
+class BankAccount {
+public:
+    double balance;
+    
+    // Method to deposit money into the account
+    void deposit(double amount) {
+        balance += amount;
+    }
+};
+
+int main() {
+    // Create an instance of BankAccount class
+    BankAccount acc;
+    
+    // Initialize account balance
+    acc.balance = 100;
+    
+    // Deposit money into the account
+    acc.deposit(50);
+    
+    // Display current balance
+    cout << "Current balance: " << acc.balance << endl;
+    
+    return 0;
+}
