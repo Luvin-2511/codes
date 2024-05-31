@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+void inputMatrix(int matrix[][10], int row, int col) {
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+}
+
+void addMatrices(int mat1[][10], int mat2[][10], int result[][10], int row, int col) {
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            result[i][j] = mat1[i][j] + mat2[i][j];
+        }
+    }
+}
+
+void printMatrix(int matrix[][10], int row, int col) {
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int mat1[10][10], mat2[10][10], result[10][10];
+    int row, col;
+
+    cout << "Enter the number of rows and columns of the matrices: ";
+    cin >> row >> col;
+
+    cout << "Enter the elements of the first matrix:" << endl;
+    inputMatrix(mat1, row, col);
+
+    cout << "Enter the elements of the second matrix:" << endl;
+    inputMatrix(mat2, row, col);
+
+    addMatrices(mat1, mat2, result, row, col);
+
+    cout << "The sum of the two matrices is:" << endl;
+    printMatrix(result, row, col);
+
+    return 0;
+}
