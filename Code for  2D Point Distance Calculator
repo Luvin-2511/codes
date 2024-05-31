@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// Point class representing a point in 2D space
+class Point {
+private:
+    double x;
+    double y;
+
+public:
+    Point(double xCoord, double yCoord) : x(xCoord), y(yCoord) {}
+
+    // Calculates the distance between two points
+    double distanceTo(const Point& other) const {
+        double dx = x - other.x;
+        double dy = y - other.y;
+        return sqrt(dx * dx + dy * dy);
+    }
+
+    // Displays the coordinates of the point
+    void display() const {
+        cout << "(" << x << ", " << y << ")";
+    }
+};
+
+// Main function
+int main() {
+    // Create two points and calculate distance between them
+    Point p1(1.0, 2.0);
+    Point p2(4.0, 6.0);
+    cout << "Distance between ";
+    p1.display();
+    cout << " and ";
+    p2.display();
+    cout << " is: " << p1.distanceTo(p2) << endl;
+
+    return 0;
+}
