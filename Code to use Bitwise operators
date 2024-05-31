@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num1 = 5; // Binary: 0101
+    int num2 = 3; // Binary: 0011
+
+    int result_and = num1 & num2; // Binary: 0001 (1 in decimal)
+    cout << "Bitwise AND: " << result_and << endl;
+
+    int result_or = num1 | num2; // Binary: 0111 (7 in decimal)
+    cout << "Bitwise OR: " << result_or << endl;
+
+    int result_xor = num1 ^ num2; // Binary: 0110 (6 in decimal)
+    cout << "Bitwise XOR: " << result_xor << endl;
+
+    int num3 = 10; // Binary: 1010
+    int result_not = ~num3; // Binary: 0101 (-11 in two's complement)
+    cout << "Bitwise NOT: " << result_not << endl;
+
+    int num4 = 4; // Binary: 0100
+    int result_left_shift = num4 << 2; // Binary: 010000 (16 in decimal)
+    cout << "Left shift: " << result_left_shift << endl;
+
+    int num5 = 16; // Binary: 10000
+    int result_right_shift = num5 >> 2; // Binary: 0001 (1 in decimal)
+    cout << "Right shift: " << result_right_shift << endl;
+
+    return 0;
+}
