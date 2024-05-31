@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int rows, cols;
+    cout << "Enter the number of rows and columns of the matrix: ";
+    cin >> rows >> cols;
+    int matrix[rows][cols];
+    int rowSum[rows];
+    for (int i = 0; i < rows; i++) {
+        cout << "Enter the elements of row " << i + 1 << ": ";
+        for (int j = 0; j < cols; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+    for (int i = 0; i < rows; i++) {
+        rowSum[i] = 0;
+        for (int j = 0; j < cols; j++) {
+            rowSum[i] += matrix[i][j];
+        }
+        cout << "The sum of row " << i + 1 << " is: " << rowSum[i] << endl;
+    }
+    return 0;
+}
