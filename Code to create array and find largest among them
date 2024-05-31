@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num[3];
+    int greatest;
+    cout << "Enter three numbers: ";
+    cin >> num[0] >> num[1] >> num[2];
+    greatest = num[0];
+    for (int i = 1; i < 3; i++) {
+        if (num[i] > greatest) {
+            greatest = num[i];
+        }
+    }
+    cout << "The greatest number is: " << greatest << endl;
+    return 0;
+}
