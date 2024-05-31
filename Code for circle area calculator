@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+
+// Shape class representing a geometric shape with a color
+class Shape {
+public:
+    std::string color;
+
+    Shape(std::string color) : color(color) {}
+};
+
+// Circle class inheriting from Shape and adding radius
+class Circle : public Shape {
+public:
+    double radius;
+
+    Circle(std::string color, double radius) : Shape(color), radius(radius) {}
+
+    // Method to calculate the area of the circle
+    double calculateArea() {
+        return 3.14159265358979323846 * radius * radius;
+    }
+};
+
+// Main function
+int main() {
+    // Create a circle object and display its details
+    Circle circle("red", 5.0);
+    std::cout << "Color: " << circle.color << "\n";
+    std::cout << "Radius: " << circle.radius << "\n";
+    std::cout << "Area: " << circle.calculateArea() << "\n";
+
+    return 0;
+}
