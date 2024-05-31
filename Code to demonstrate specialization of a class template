@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+template <typename T>
+class Printer {
+public:
+    void print(const T& value) {
+        cout << value << endl;
+    }
+};
+
+template <>
+class Printer<char*> {
+public:
+    void print(const char* value) {
+        cout << value << endl;
+    }
+};
+
+int main() {
+    Printer<int> intPrinter;
+    intPrinter.print(5);
+
+    Printer<string> stringPrinter;
+    stringPrinter.print("hello");
+
+    Printer<char*> cstringPrinter;
+    cstringPrinter.print("world");
+
+    return 0;
+}
