@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+template <typename T>
+class Container {
+public:
+    virtual size_t getSize() const = 0;
+};
+
+template <typename T, size_t N>
+class ArrayContainer : public Container<T> {
+private:
+    T arr[N];
+
+public:
+    size_t getSize() const override {
+        return N;
+    }
+};
+
+int main() {
+    ArrayContainer<int, 5> intArray;
+    ArrayContainer<double, 3> doubleArray;
+
+    cout << "Size of integer array: " << intArray.getSize() << endl;
+    cout << "Size of double array: " << doubleArray.getSize() << endl;
+
+    return 0;
+}
