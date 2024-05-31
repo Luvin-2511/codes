@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+double computeAverage(int* arr, int n) {
+    int count = 0;
+    int sum = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > 0) {
+            sum += arr[i];
+            count++;
+        }
+    }
+
+    if (count == 0) {
+        return 0.0;
+    } else {
+        return static_cast<double>(sum) / count;
+    }
+}
+
+int main() {
+    int arr[] = {-1, 2, 3, -4, 5, 6, -7, 8, 9};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    double avg = computeAverage(arr, n);
+
+    if (avg == 0.0) {
+        cout << "No positive numbers found." << endl;
+    } else {
+        cout << "The average of all positive numbers is: " << avg << endl;
+    }
+
+    return 0;
+}
