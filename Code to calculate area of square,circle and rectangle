@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double area(double side) {
+    return side * side;
+}
+double area(double length, double width) {
+    return length * width;
+}
+double circleArea(double radius) {
+    return M_PI * radius * radius;
+}
+
+int main() {
+    double side = 5.0;
+    double length = 6.0;
+    double width = 4.0;
+    double radius = 3.0;
+
+    cout << "Area of the square: " << area(side) << endl;
+    cout << "Area of the rectangle: " << area(length, width) << endl;
+    cout << "Area of the circle: " << circleArea(radius) << endl;
+
+    return 0;
+}
