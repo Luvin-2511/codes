@@ -1,0 +1,50 @@
+// Title: Bank Account Management System
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+private:
+    string accountNumber;
+    string accountHolderName;
+    double balance;
+
+public:
+    BankAccount(string accNum, string accHolder, double initialBalance) {
+        accountNumber = accNum;
+        accountHolderName = accHolder;
+        balance = initialBalance;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+        cout << "Deposit of $" << amount << " successful." << endl;
+    }
+
+    void withdraw(double amount) {
+        if (amount > balance) {
+            cout << "Insufficient funds. Withdrawal failed." << endl;
+        } else {
+            balance -= amount;
+            cout << "Withdrawal of $" << amount << " successful." << endl;
+        }
+    }
+
+    void displayAccountDetails() {
+        cout << "Account Number: " << accountNumber << endl;
+        cout << "Account Holder Name: " << accountHolderName << endl;
+        cout << "Balance: $" << balance << endl;
+    }
+};
+
+int main() {
+    BankAccount account("123456789", "abc", 1000.0);
+    cout << "Initial Account Details:" << endl;
+    account.displayAccountDetails();
+    cout << endl;
+    account.deposit(500.0);
+    account.withdraw(200.0);
+    cout << "\nUpdated Account Details:" << endl;
+    account.displayAccountDetails();
+    return 0;
+}
