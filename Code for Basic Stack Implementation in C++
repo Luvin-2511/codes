@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+const int MAX_SIZE = 100;
+
+class Stack {
+private:
+    int data[MAX_SIZE];
+    int top;
+
+public:
+    Stack() : top(-1) {}
+
+    void push(int element) {
+        if (top == MAX_SIZE - 1) {
+            cout << "Stack Overflow: Cannot push element onto full stack." << endl;
+            return;
+        }
+        data[++top] = element;
+    }
+
+    int pop() {
+        if (isEmpty()) {
+            cout << "Stack Underflow: Cannot pop element from empty stack." << endl;
+            return -1;
+        }
+        return data[top--];
+    }
+
+    bool isEmpty() const {
+        return top == -1;
+    }
+};
+
+int main() {
+    // Heading
+    cout << "----- Stack Implementation in C++ -----" << endl;
+
+    Stack stack;
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
+
+    while (!stack.isEmpty()) {
+        cout << "Popped: " << stack.pop() << endl;
+    }
+
+    cout << "Attempting to pop from an empty stack..." << endl;
+    cout << "Popped: " << stack.pop() << endl; 
+
+    return 0;
+}
