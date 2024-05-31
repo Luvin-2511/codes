@@ -1,0 +1,57 @@
+#include <iostream>
+#include <unordered_map>
+#include <string>
+#include <stdexcept>
+using namespace std;
+
+class Dictionary {
+private:
+    unordered_map<string, string> words;
+public:
+    void addWord(const string& word, const string& meaning) {
+        words[word] = meaning;
+    }
+    string searchWord(const string& word) const {
+        auto it = words.find(word);
+        if (it != words.end()) {
+            return it->second;
+        } else {
+            return "Word not found";
+        }
+    }
+    string getMeaning(const string& word) const {
+        auto it = words.find(word);
+        if (it != words.end()) {
+            return it->second;
+        } else {
+            throw runtime_error("Word not found");
+        }
+    }
+};
+
+int main() {
+    Dictionary dict;
+
+    // Add words to the dictionary
+    dict.addWord("apple", "a fruit");
+    dict.addWord("book", "a written or printed work consisting of pages glued or sewn together along one side and bound in covers.");
+    dict.addWord("computer", "an electronic device for storing and processing data");
+
+    // Search for words in the dictionary
+    cout << "Meaning of 'apple': " << dict.searchWord("apple") << endl;
+    cout << "Meaning of 'book': " << dict.searchWord("book") << endl;
+    cout << "Meaning of 'computer': " << dict.searchWord("computer") << endl;
+    cout << "Meaning of 'cat': " << dict.searchWord("cat") << endl; // Word not found
+
+    // Retrieve meanings of words from the dictionary
+    try {
+        cout << "Meaning of 'apple': " << dict.getMeaning("apple") << endl;
+        cout << "Meaning of 'book': " << dict.getMeaning("book") << endl;
+        cout << "Meaning of 'computer': " << dict.getMeaning("computer") << endl;
+        cout << "Meaning of 'cat': " << dict.getMeaning("cat") << endl; // Word not found
+    } catch (const runtime_error& e) {
+        cerr << "Error: " << e.what() << endl;
+    }
+
+    return 0;
+}
