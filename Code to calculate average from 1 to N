@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    double sum = 0;
+    double average;
+    cout << "Enter the value of n: ";
+    cin >> n;
+    for (int i = 1; i <= n; ++i) {
+        sum += i;
+    }
+    average = sum / n;
+    cout << "The average of numbers from 1 to " << n << " is: " << average << endl;
+    return 0;
+}
