@@ -1,0 +1,17 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+template <typename T1, typename T2>
+auto Sum(T1 a, T2 b) -> decltype(a + b) {
+    return a + b;
+}
+
+int main() {
+    int x = 5;
+    double y = 10.5;
+    cout << "Sum of " << x << " and " << y << " is: " << Sum(x, y) << endl;
+
+    return 0;
+}
