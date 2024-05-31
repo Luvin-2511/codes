@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+int sumAllElements(int matrix[3][3]) {
+    int sum = 0;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            sum += matrix[i][j];
+        }
+    }
+    return sum;
+}
+
+void sumRowElements(int matrix[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        int sum = 0;
+        for (int j = 0; j < 3; j++) {
+            sum += matrix[i][j];
+        }
+        cout << "Sum of elements in row " << i + 1 << ": " << sum << endl;
+    }
+}
+
+void sumColumnElements(int matrix[3][3]) {
+    for (int j = 0; j < 3; j++) {
+        int sum = 0;
+        for (int i = 0; i < 3; i++) {
+            sum += matrix[i][j];
+        }
+        cout << "Sum of elements in column " << j + 1 << ": " << sum << endl;
+    }
+}
+
+int sumDiagonalElements(int matrix[3][3]) {
+    int sum = 0;
+    for (int i = 0; i < 3; i++) {
+        sum += matrix[i][i];
+    }
+    return sum;
+}
+
+int main() {
+    int matrix[3][3] = {{1, 2, 4}, {3, 1, 6}, {7, 8, 9}};
+
+    cout << "Sum of all elements: " << sumAllElements(matrix) << endl;
+    cout << endl;
+
+    cout << "Sum of elements in each row:" << endl;
+    sumRowElements(matrix);
+    cout << endl;
+
+    cout << "Sum of elements in each column:" << endl;
+    sumColumnElements(matrix);
+    cout << endl;
+
+    cout << "Sum of diagonal elements: " << sumDiagonalElements(matrix) << endl;
+
+    return 0;
+}
