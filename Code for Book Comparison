@@ -1,0 +1,58 @@
+// Title: Book Comparison Program
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+private:
+    string title;
+    string author;
+    int publicationYear;
+
+public:
+    Book(string t, string a, int year) {
+        title = t;
+        author = a;
+        publicationYear = year;
+    }
+
+    int comparePublicationYear(Book b) {
+        if (publicationYear < b.publicationYear) {
+            return -1;
+        } else if (publicationYear > b.publicationYear) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    void display() {
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+        cout << "Publication Year: " << publicationYear << endl;
+    }
+};
+
+int main() {
+    Book book1("The Great Gatsby", "F. Scott Fitzgerald", 1925);
+    Book book2("To Kill a Mockingbird", "Harper Lee", 1960);
+
+    int result = book1.comparePublicationYear(book2);
+
+    cout << "Book 1:" << endl;
+    book1.display();
+    cout << endl;
+    cout << "Book 2:" << endl;
+    book2.display();
+    cout << endl;
+
+    if (result < 0) {
+        cout << "Book 1 was published before Book 2." << endl;
+    } else if (result > 0) {
+        cout << "Book 1 was published after Book 2." << endl;
+    } else {
+        cout << "Both books were published in the same year." << endl;
+    }
+
+    return 0;
+}
