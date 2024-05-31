@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Vehicle {
+public:
+    string make;
+
+    Vehicle(string make) : make(make) {}
+};
+
+class Engine {
+public:
+    int horsepower;
+
+    Engine(int horsepower) : horsepower(horsepower) {}
+};
+
+class Car : public Vehicle, public Engine {
+public:
+    string model;
+
+    Car(string make, int horsepower, string model)
+        : Vehicle(make), Engine(horsepower), model(model) {}
+
+    void displayDetails() {
+        cout << "Make: " << make << "\n";
+        cout << "Horsepower: " << horsepower << "\n";
+        cout << "Model: " << model << "\n";
+    }
+};
+
+int main() {
+    Car car("Toyota", 200, "Camry");
+    car.displayDetails();
+
+    return 0;
+}
