@@ -1,0 +1,100 @@
+// Title: Bank Account Management System
+#include <iostream>
+#include <vector>
+#include <stdexcept>
+using namespace std;
+
+class Account {
+private:
+    string accountNumber;
+    double balance;
+
+public:
+    Account(const string& accNumber, double initialBalance) :
+        accountNumber(accNumber), balance(initialBalance) {}
+
+    string getAccountNumber() const {
+        return accountNumber;
+    }
+
+    void deposit(double amount) {
+        if (amount < 0) {
+            throw invalid_argument("Deposit amount must be positive.");
+        }
+        balance += amount;
+    }
+
+    void withdraw(double amount) {
+        if (amount < 0) {
+            throw invalid_argument("Withdrawal amount must be positive.");
+        }
+        if (amount > balance) {
+            throw runtime_error("Insufficient funds.");
+        }
+        balance -= amount;
+    }
+
+    double getBalance() const {
+        return balance;
+    }
+};
+
+class Bank {
+private:
+    vector<Account> accounts;
+
+public:
+    void addAccount(const string& accNumber, double initialBalance) {
+        accounts.push_back(Account(accNumber, initialBalance));
+    }
+
+    void deposit(const string& accNumber, double amount) {
+        for (auto& account : accounts) {
+            if (account.getAccountNumber() == accNumber) {
+                account.deposit(amount);
+                return;
+            }
+        }
+        throw invalid_argument("Account not found.");
+    }
+
+    void withdraw(const string& accNumber, double amount) {
+        for (auto& account : accounts) {
+            if (account.getAccountNumber() == accNumber) {
+                account.withdraw(amount);
+                return;
+            }
+        }
+        throw invalid_argument("Account not found.");
+    }
+
+    double getBalance(const string& accNumber) const {
+        for (const auto& account : accounts) {
+            if (account.getAccountNumber() == accNumber) {
+                return account.getBalance();
+            }
+        }
+        throw invalid_argument("Account not found.");
+    }
+};
+
+int main() {
+    Bank bank;
+    bank.addAccount("123456", 1000);
+    bank.addAccount("789012", 2000);
+    try {
+        bank.deposit("123456", 500);
+        bank.withdraw("789012", 300);
+    } catch (const exception& e) {
+        cerr << "Error: " << e.what() << endl;
+    }
+    try {
+        cout << "Balance of account 123456: " << bank.getBalance("123456")
+             << endl;
+        cout << "Balance of account 789012: " << bank.getBalance("789012")
+             << endl;
+    } catch (const exception& e) {
+        cerr << "Error: " << e.what() << endl;
+    }
+    return 0;
+}
