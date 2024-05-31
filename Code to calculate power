@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+double power(double x, int n) {
+    if (n < 0) {
+        cerr << "Error: Invalid exponent value." << endl;
+        return 0;
+    }
+    double result = 1;
+    for (int i = 1; i <= n; i++) {
+        result *= x;
+    }
+    return result;
+}
+
+int main() {
+    double x;
+    int n;
+    cout << "Enter a base number (x): ";
+    cin >> x;
+    cout << "Enter a non-negative integer exponent (n): ";
+    cin >> n;
+    cout << "x^n = " << power(x, n) << endl;
+    return 0;
+}
