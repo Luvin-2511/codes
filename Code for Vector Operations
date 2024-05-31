@@ -1,0 +1,48 @@
+// Title: Vector Operations Program
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Vector {
+private:
+    double x;
+    double y;
+    double z;
+
+public:
+    Vector(double x_val, double y_val, double z_val) : x(x_val), y(y_val), z(z_val) {}
+
+    double dotProduct(const Vector& other) const {
+        return x * other.x + y * other.y + z * other.z;
+    }
+
+    Vector crossProduct(const Vector& other) const {
+        double cross_x = y * other.z - z * other.y;
+        double cross_y = z * other.x - x * other.z;
+        double cross_z = x * other.y - y * other.x;
+        return Vector(cross_x, cross_y, cross_z);
+    }
+
+    void display() const {
+        cout << "(" << x << ", " << y << ", " << z << ")" << endl;
+    }
+};
+
+int main() {
+    Vector v1(1.0, 2.0, 3.0);
+    Vector v2(4.0, 5.0, 6.0);
+
+    cout << "Vector 1: ";
+    v1.display();
+    cout << "Vector 2: ";
+    v2.display();
+
+    double dot_product = v1.dotProduct(v2);
+    cout << "Dot Product: " << dot_product << endl;
+
+    Vector cross_product = v1.crossProduct(v2);
+    cout << "Cross Product: ";
+    cross_product.display();
+
+    return 0;
+}
