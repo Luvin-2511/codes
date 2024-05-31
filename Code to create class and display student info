@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+// Definition of Student class
+class Student {
+public:
+    string name;
+    int age;
+    
+    // Method to display student information
+    void display() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+int main() {
+    // Create an instance of Student class
+    Student s;
+    
+    // Set student's name and age
+    s.name = "Alice";
+    s.age = 20;
+    
+    // Display student information
+    s.display();
+    
+    return 0;
+}
