@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+template <typename T, size_t N>
+T arraySum(const T (&arr)[N]) {
+    T sum = T();
+    for (size_t i = 0; i < N; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+int main() {
+    int arrInt[5] = {1, 2, 3, 4, 5};
+    double arrDouble[3] = {1.1, 2.2, 3.3};
+
+    cout << "Sum of integer array: " << arraySum(arrInt) << endl;
+    cout << "Sum of double array: " << arraySum(arrDouble) << endl;
+
+    return 0;
+}
