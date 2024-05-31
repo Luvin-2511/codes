@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+    while (number != 0) {
+        if (number % 2 == 0) {
+            cout << "The number " << number << " is even." << endl;
+        } else {
+            cout << "The number " << number << " is odd." << endl;
+        }
+        cout << "Enter another number (or enter 0 to quit): ";
+        cin >> number;
+    }
+    return 0;
+}
