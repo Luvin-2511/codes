@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+void fibonacci(int limit) {
+    int num1 = 0, num2 = 1, num3;
+    cout << "Fibonacci series up to " << limit << ":" << endl;
+    while (num1 <= limit) {
+        cout << num1 << " ";
+        num3 = num1 + num2;
+        num1 = num2;
+        num2 = num3;
+    }
+    cout << endl;
+}
+
+int main() {
+    int limit;
+    cout << "Enter the limit to print the Fibonacci series: ";
+    cin >> limit;
+    fibonacci(limit);
+    return 0;
+}
