@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+void incrementByValue(int& value) {
+    value = value + 1;
+}
+
+int main() {
+    int num = 5;
+
+    incrementByValue(num);
+
+    cout << "The value of num after incrementing is: " << num << endl;
+
+    return 0;
+}
