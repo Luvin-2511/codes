@@ -1,0 +1,65 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class BankAccount {
+private:
+    string accountNumber;
+    string accountHolderName;
+    double balance;
+
+public:
+    BankAccount(string accNum, string accHolder, double initialBalance)
+        : accountNumber(accNum), accountHolderName(accHolder), balance(initialBalance) {}
+
+    double getBalance() const {
+        return balance;
+    }
+};
+
+class BankManager {
+private:
+    vector<BankAccount> accounts;
+
+public:
+    void addAccount(const BankAccount& account) {
+        accounts.push_back(account);
+    }
+
+    double getTotalBalance() const {
+        double totalBalance = 0;
+        for (const auto& acc : accounts) {
+            totalBalance += acc.getBalance();
+        }
+        return totalBalance;
+    }
+
+    BankAccount findAccountWithHighestBalance() const {
+        if (accounts.empty()) {
+            cerr << "No accounts available." << endl;
+            return BankAccount("", "", 0);
+        }
+        auto maxBalanceAccount = accounts[0];
+        for (size_t i = 1; i < accounts.size(); ++i) {
+            if (accounts[i].getBalance() > maxBalanceAccount.getBalance()) {
+                maxBalanceAccount = accounts[i];
+            }
+        }
+        return maxBalanceAccount;
+    }
+};
+
+int main() {
+    BankManager bankManager;
+    bankManager.addAccount(BankAccount("123456", "Alice", 1000.0));
+    bankManager.addAccount(BankAccount("789012", "Bob", 1500.0));
+    bankManager.addAccount(BankAccount("345678", "Charlie", 2000.0));
+
+    cout << "Total balance of all accounts: $" << bankManager.getTotalBalance() << endl;
+
+    BankAccount highestBalanceAccount = bankManager.findAccountWithHighestBalance();
+    cout << "Account with the highest balance: $" << highestBalanceAccount.getBalance() << endl;
+
+    return 0;
+}
