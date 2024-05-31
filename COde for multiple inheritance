@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Person {
+public:
+    string name;
+
+    Person(string name) : name(name) {}
+};
+
+class Employee : public virtual Person {
+public:
+    int salary;
+
+    Employee(string name, int salary) : Person(name), salary(salary) {}
+};
+
+class Student : public virtual Person {
+public:
+    double gpa;
+
+    Student(string name, double gpa) : Person(name), gpa(gpa) {}
+};
+
+class WorkingStudent : public Employee, public Student {
+public:
+    WorkingStudent(string name, int salary, double gpa)
+        : Person(name), Employee(name, salary), Student(name, gpa) {}
+
+    void displayDetails() {
+        cout << "Name: " << name << "\n";
+        cout << "Salary: " << salary << "\n";
+        cout << "GPA: " << gpa << "\n";
+    }
+};
+
+int main() {
+    WorkingStudent ws("Arpit", 50000, 5.5);
+    ws.displayDetails();
+
+    return 0;
+}
